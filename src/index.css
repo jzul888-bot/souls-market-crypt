@@ -1,0 +1,367 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Souls Market - Sistema de Diseño Gótico Inspirado en Dark Souls */
+
+@layer base {
+  :root {
+    /* Paleta de colores gótica - Dark Souls */
+    --background: 220 20% 8%;           /* Negro profundo con tinte azul */
+    --foreground: 45 20% 85%;           /* Dorado pálido envejecido */
+
+    --card: 220 25% 12%;                /* Gris carbón oscuro */
+    --card-foreground: 45 15% 80%;      /* Dorado suave */
+
+    --popover: 220 30% 10%;             /* Negro carbón */
+    --popover-foreground: 45 20% 85%;   /* Dorado envejecido */
+
+    --primary: 0 65% 45%;               /* Rojo sangre profundo */
+    --primary-foreground: 45 30% 90%;   /* Dorado brillante */
+
+    --secondary: 220 15% 20%;           /* Gris piedra oscuro */
+    --secondary-foreground: 45 25% 75%; /* Dorado apagado */
+
+    --muted: 220 20% 15%;               /* Gris sombra */
+    --muted-foreground: 45 10% 60%;     /* Dorado muy apagado */
+
+    --accent: 45 50% 50%;               /* Dorado místico */
+    --accent-foreground: 220 30% 10%;   /* Negro profundo */
+
+    /* Epic rarity color */
+    --epic: 147 51% 65%;                /* Púrpura épico */
+    --epic-foreground: 220 30% 90%;     /* Texto épico */
+
+    --destructive: 0 70% 40%;           /* Rojo sangre oscuro */
+    --destructive-foreground: 45 30% 90%; /* Dorado claro */
+
+    --border: 220 25% 25%;              /* Gris hierro */
+    --input: 220 30% 15%;               /* Negro input */
+    --ring: 0 65% 45%;                  /* Rojo sangre (focus) */
+
+    --radius: 0.75rem;                  /* Bordes medievales */
+
+    /* Gradientes góticos */
+    --gradient-dark-fire: linear-gradient(135deg, hsl(220 30% 8%), hsl(0 40% 15%), hsl(220 25% 12%));
+    --gradient-blood: linear-gradient(90deg, hsl(0 70% 25%), hsl(0 80% 35%));
+    --gradient-gold: linear-gradient(135deg, hsl(45 60% 40%), hsl(45 70% 60%));
+    --gradient-shadow: linear-gradient(180deg, hsla(220 30% 5% / 0.9), hsla(220 25% 10% / 0.95));
+
+    /* Sombras dramáticas */
+    --shadow-gothic: 0 10px 40px -5px hsla(220 30% 5% / 0.8);
+    --shadow-fire: 0 0 30px hsla(0 70% 45% / 0.3);
+    --shadow-gold: 0 5px 20px hsla(45 60% 50% / 0.2);
+
+    /* Animaciones */
+    --transition-souls: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-flame: transform 0.3s ease-out;
+
+    /* Sidebar */
+    --sidebar-background: 220 25% 8%;
+    --sidebar-foreground: 45 20% 75%;
+    --sidebar-primary: 0 65% 45%;
+    --sidebar-primary-foreground: 45 30% 90%;
+    --sidebar-accent: 220 20% 15%;
+    --sidebar-accent-foreground: 45 25% 80%;
+    --sidebar-border: 220 25% 20%;
+    --sidebar-ring: 0 65% 45%;
+  }
+
+  .dark {
+    /* Modo oscuro por defecto - mismos valores */
+    --background: 220 20% 8%;
+    --foreground: 45 20% 85%;
+    --card: 220 25% 12%;
+    --card-foreground: 45 15% 80%;
+    --popover: 220 30% 10%;
+    --popover-foreground: 45 20% 85%;
+    --primary: 0 65% 45%;
+    --primary-foreground: 45 30% 90%;
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 45 25% 75%;
+    --muted: 220 20% 15%;
+    --muted-foreground: 45 10% 60%;
+    --accent: 45 50% 50%;
+    --accent-foreground: 220 30% 10%;
+
+    /* Epic rarity color */
+    --epic: 147 51% 65%;
+    --epic-foreground: 220 30% 90%;
+    --destructive: 0 70% 40%;
+    --destructive-foreground: 45 30% 90%;
+    --border: 220 25% 25%;
+    --input: 220 30% 15%;
+    --ring: 0 65% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Cinzel', serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
+}
+
+@layer components {
+  /* Componentes góticos personalizados */
+  .souls-card {
+    @apply bg-card border border-border rounded-lg;
+    background: var(--gradient-dark-fire);
+    backdrop-filter: blur(10px);
+    transition: var(--transition-souls);
+    box-shadow: var(--shadow-gothic);
+  }
+
+  .souls-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-fire);
+  }
+
+  .flame-text {
+    background: var(--gradient-gold);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 2px 10px hsla(45 60% 50% / 0.3);
+  }
+
+  .blood-accent {
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .gothic-border {
+    border-image: linear-gradient(45deg, 
+      hsl(var(--border)), 
+      hsl(var(--accent) / 0.5), 
+      hsl(var(--border))
+    ) 1;
+  }
+
+  .nft-hover {
+    transition: var(--transition-souls);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nft-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsla(45 60% 50% / 0.1), transparent);
+    transition: left 0.5s;
+  }
+
+  .nft-hover:hover::before {
+    left: 100%;
+  }
+
+  .souls-button {
+    @apply px-6 py-3 rounded-lg font-medium transition-all duration-300;
+    background: var(--gradient-blood);
+    color: hsl(var(--primary-foreground));
+    box-shadow: var(--shadow-gothic);
+    border: 1px solid hsl(var(--primary) / 0.5);
+  }
+
+  .souls-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-fire);
+    background: linear-gradient(90deg, hsl(0 80% 35%), hsl(0 85% 45%));
+  }
+
+  .hero-bg {
+    background: var(--gradient-shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, hsla(0 70% 30% / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, hsla(45 60% 40% / 0.1) 0%, transparent 50%);
+    animation: flame-flicker 4s ease-in-out infinite alternate;
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: 
+      /* Fuego en esquinas */
+      radial-gradient(ellipse at top left, hsla(15 100% 60% / 0.15) 0%, transparent 40%),
+      radial-gradient(ellipse at top right, hsla(10 90% 50% / 0.12) 0%, transparent 45%),
+      radial-gradient(ellipse at bottom left, hsla(20 85% 55% / 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, hsla(5 95% 45% / 0.13) 0%, transparent 35%),
+      /* Humo en los bordes */
+      linear-gradient(to right, hsla(220 30% 20% / 0.8) 0%, transparent 15%, transparent 85%, hsla(220 30% 20% / 0.8) 100%),
+      linear-gradient(to bottom, hsla(220 30% 15% / 0.6) 0%, transparent 20%, transparent 80%, hsla(220 30% 15% / 0.6) 100%);
+    animation: smoke-drift 8s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  /* Efectos de fuego animado en los bordes */
+  .fire-border {
+    position: relative;
+  }
+
+  .fire-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsla(15 100% 60% / 0.3) 10%, 
+      hsla(25 95% 55% / 0.4) 25%, 
+      hsla(10 90% 50% / 0.35) 50%, 
+      hsla(20 100% 45% / 0.4) 75%, 
+      hsla(15 95% 60% / 0.3) 90%, 
+      transparent 100%
+    );
+    animation: fire-dance 3s ease-in-out infinite;
+    filter: blur(1px);
+  }
+
+  .fire-border::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      hsla(10 100% 50% / 0.25) 15%, 
+      hsla(20 90% 45% / 0.3) 35%, 
+      hsla(15 95% 55% / 0.28) 65%, 
+      hsla(25 100% 50% / 0.32) 85%, 
+      transparent 100%
+    );
+    animation: fire-dance 2.5s ease-in-out infinite reverse;
+    filter: blur(1.5px);
+  }
+
+  @keyframes flame-flicker {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes smoke-drift {
+    0% { 
+      opacity: 0.6; 
+      transform: translateY(0px) scaleY(1);
+    }
+    100% { 
+      opacity: 0.8; 
+      transform: translateY(-10px) scaleY(1.05);
+    }
+  }
+
+  @keyframes fire-dance {
+    0%, 100% { 
+      transform: scaleX(1) scaleY(0.8);
+      opacity: 0.7;
+    }
+    25% { 
+      transform: scaleX(1.1) scaleY(1.2);
+      opacity: 0.9;
+    }
+    50% { 
+      transform: scaleX(0.9) scaleY(1.1);
+      opacity: 0.8;
+    }
+    75% { 
+      transform: scaleX(1.05) scaleY(0.95);
+      opacity: 0.85;
+    }
+  }
+
+  @keyframes souls-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+  }
+
+  .pulse-souls {
+    animation: souls-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* Fuego y efectos especiales */
+@keyframes flicker {
+  0%, 100% { text-shadow: 0 0 5px #ff6b35, 0 0 10px #ff6b35, 0 0 15px #ff6b35, 0 0 20px #ff4500, 0 0 35px #ff4500, 0 0 40px #ff4500; }
+  50% { text-shadow: 0 0 2px #ff6b35, 0 0 5px #ff6b35, 0 0 8px #ff6b35, 0 0 12px #ff4500, 0 0 18px #ff4500, 0 0 25px #ff4500; }
+}
+
+@keyframes fire-dance {
+  0% { transform: translateY(0px) scaleY(1); }
+  25% { transform: translateY(-2px) scaleY(1.05); }
+  50% { transform: translateY(-1px) scaleY(0.98); }
+  75% { transform: translateY(-3px) scaleY(1.02); }
+  100% { transform: translateY(0px) scaleY(1); }
+}
+
+@keyframes smoke-rise {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+  50% { transform: translateY(-10px) rotate(5deg); opacity: 0.4; }
+  100% { transform: translateY(-20px) rotate(-3deg); opacity: 0; }
+}
+
+@keyframes ember-float {
+  0% { transform: translateY(0px) translateX(0px); opacity: 1; }
+  50% { transform: translateY(-15px) translateX(5px); opacity: 0.6; }
+  100% { transform: translateY(-30px) translateX(-3px); opacity: 0; }
+}
+
+.souls-title {
+  font-family: 'Cinzel', 'Times New Roman', serif;
+  background: linear-gradient(45deg, #ff6b35, #ff4500, #ff8c00, #ff6b35);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: flicker 2s ease-in-out infinite alternate, fire-dance 3s ease-in-out infinite;
+  position: relative;
+  text-shadow: 0 0 30px rgba(255, 107, 53, 0.5);
+}
+
+.souls-title::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 10%;
+  width: 80%;
+  height: 10px;
+  background: linear-gradient(90deg, transparent, #ff4500, #ff6b35, #ff4500, transparent);
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: ember-float 4s ease-in-out infinite;
+}
+
+.souls-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 20%;
+  width: 60%;
+  height: 15px;
+  background: radial-gradient(ellipse, rgba(255, 107, 53, 0.4), transparent);
+  animation: smoke-rise 3s ease-in-out infinite;
+}

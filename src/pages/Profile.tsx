@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -6,34 +5,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Header from "@/components/Header";
 import { useSouls } from "@/contexts/SoulsContext";
 import { User, Trophy, Star, Crown } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const { souls } = useSouls();
-  
-  // Simulamos NFTs comprados (en una app real, esto vendría de un estado global o base de datos)
-  const [ownedNFTs] = useState([
-    {
-      id: "char-001",
-      name: "Caballero de la Llama Negra",
-      image: "/src/assets/characters/dark-flame-knight.jpg",
-      rarity: "legendary",
-      purchaseDate: "2024-01-15"
-    },
-    {
-      id: "char-005",
-      name: "Asesino Sombra de Luna", 
-      image: "/src/assets/characters/moon-shadow-assassin.jpg",
-      rarity: "legendary",
-      purchaseDate: "2024-01-20"
-    },
-    {
-      id: "char-013",
-      name: "Cazador de Sombras",
-      image: "/src/assets/characters/shadow-hunter.jpg", 
-      rarity: "rare",
-      purchaseDate: "2024-01-22"
-    }
-  ]);
+  const { souls, ownedNFTs } = useSouls();
 
   const getRarityColor = (rarity: string) => {
     switch (rarity) {
@@ -163,7 +138,7 @@ const Profile = () => {
                       Aún no tienes NFTs en tu colección
                     </p>
                     <Button asChild>
-                      <a href="/marketplace">Explorar Marketplace</a>
+                      <Link to="/marketplace">Explorar Marketplace</Link>
                     </Button>
                   </div>
                 )}

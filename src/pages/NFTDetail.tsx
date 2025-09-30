@@ -49,16 +49,30 @@ const NFTDetail = () => {
   };
 
   const handleClaimWithSouls = () => {
-    if (purchaseNFT(nft.price)) {
+    const purchased = purchaseNFT(nft.price, {
+      id: nft.id,
+      name: nft.name,
+      image: nft.image,
+      rarity: nft.rarity
+    });
+
+    if (purchased) {
       toast.success(`¡Alma Reclamada!`, {
         description: `Has reclamado "${nft.name}" por ${nft.price} ALMAS. La entidad ahora te pertenece.`,
         duration: 5000,
       });
     } else {
-      toast.error("Almas Insuficientes", {
-        description: `Necesitas ${nft.price} ALMAS para reclamar esta entidad. Tienes ${souls} ALMAS.`,
-        duration: 5000,
-      });
+      if (souls < nft.price) {
+        toast.error("Almas Insuficientes", {
+          description: `Necesitas ${nft.price} ALMAS para reclamar esta entidad. Tienes ${souls} ALMAS.`,
+          duration: 5000,
+        });
+      } else {
+        toast.error("Ya Poseído", {
+          description: "Ya posees esta entidad en tu colección.",
+          duration: 5000,
+        });
+      }
     }
   };
 

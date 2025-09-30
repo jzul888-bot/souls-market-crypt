@@ -191,7 +191,7 @@ const Profile = () => {
                     <Trophy className="w-12 h-12 mx-auto mb-4 text-yellow-500" />
                     <h3 className="font-semibold mb-2">Primer Coleccionista</h3>
                     <p className="text-sm text-muted-foreground">Compra tu primer NFT</p>
-                    <Badge className="mt-2" variant={ownedNFTs.length > 0 ? "default" : "secondary"}>
+                    <Badge variant={ownedNFTs.length > 0 ? "default" : "secondary"} className="mt-2">
                       {ownedNFTs.length > 0 ? "Completado" : "Pendiente"}
                     </Badge>
                   </CardContent>
@@ -202,7 +202,7 @@ const Profile = () => {
                     <Star className="w-12 h-12 mx-auto mb-4 text-orange-500" />
                     <h3 className="font-semibold mb-2">Cazador Legendario</h3>
                     <p className="text-sm text-muted-foreground">Posee 5 NFTs legendarios</p>
-                    <Badge className="mt-2" variant={(userStats.rareCounts.legendary || 0) >= 5 ? "default" : "secondary"}>
+                    <Badge variant={(userStats.rareCounts.legendary || 0) >= 5 ? "default" : "secondary"} className="mt-2">
                       {(userStats.rareCounts.legendary || 0) >= 5 ? "Completado" : `${userStats.rareCounts.legendary || 0}/5`}
                     </Badge>
                   </CardContent>
@@ -213,7 +213,7 @@ const Profile = () => {
                     <Crown className="w-12 h-12 mx-auto mb-4 text-purple-500" />
                     <h3 className="font-semibold mb-2">Señor de las Almas</h3>
                     <p className="text-sm text-muted-foreground">Acumula 100,000 almas</p>
-                    <Badge className="mt-2" variant={souls >= 100000 ? "default" : "secondary"}>
+                    <Badge variant={souls >= 100000 ? "default" : "secondary"} className="mt-2">
                       {souls >= 100000 ? "Completado" : "Pendiente"}
                     </Badge>
                   </CardContent>
